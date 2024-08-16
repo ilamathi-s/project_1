@@ -7,10 +7,10 @@ function Signin() {
     <div className="mb-3">
          
       <Form>
-        <label name="mail">Mail id:
-        <input name="mail" placeholder="Enter valid mail id"></input></label>
-        <label name="password">Password:
-        <input name="password" placeholder="Enter valid Password"></input></label>
+        <label htmlFor="mail">Mail id:
+        <input htmlFor="mail" placeholder="Enter valid mail id"></input></label>
+        <label htmlFor="password">Password:
+        <input htmlFor="password" placeholder="Enter valid Password"></input></label>
         <Button type="submit" variant="outline-success">Sign In</Button>
       </Form>
       <Link to="/signup" variant="link" style={{ marginRight: '10px' }} >New User</Link> 
