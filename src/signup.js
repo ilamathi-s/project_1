@@ -16,7 +16,7 @@ function Signup() {
         <input name="password" placeholder="Password"></input></label>
         <Button variant="outline-success" type="submit"> Sign Up</Button>
       </Form>
-      <p>Already Have an Account <Link to="signin" variant="link"  >Sign In</Link></p>
+      <p>Already Have an Account <Link to="/signin" variant="link"  >Sign In</Link></p>
     </div>
   );
 }
