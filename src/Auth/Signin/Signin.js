@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import Axios from 'axios' 
+import {toast} from 'react-toastify';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {Link} from "react-router-dom";
@@ -7,31 +7,49 @@ import '../Signin/Signin.css';
 function Signin() {
   const [mail,setMail]=useState("");
   const [password,setPassword]=useState("");
-
-  const [email,setEmail]=useState("");
-  const [passWord,setPassWord]=useState("");
-  const Signin = () =>{
-    Axios.post('http://localhost:3000/Signin', {
-      email: mail,
-      password: password }).then((res) => {console.log(res);});
-
+  const ProceedLogin = (e)=>{
+    e.preventDefault();
+    if(validate()){
+        fetch("http://localhost:3000/Signin"+mail).then((res)=>{
+          return res.json();
+        }).then((resp)=>{
+          console.log(resp)
+        }).catch((err)=>{
+          toast.error("Login Failed due to :"+err.message);
+        });
+    }
   }
-  const Login = () =>{
-    Axios.post('http://localhost:3000/Signin', {
-      email: email,
-      password: passWord }).then((res) => {console.log(res);});
-
+  const validate=()=>{
+    let result=true;
+    if(mail==='' || mail===null){
+      result=false;
+      toast.warning('Please enter mail id');
+    }
+    if(password==='' || password===null){
+      result=false;
+      toast.warning('Please enter password');
+    }
+    return result;
   }
   return (
     <div className="mb-3"> 
-        <Form className="form">
+        <Form className="form" onSubmit={ProceedLogin}>
         <h2 >Sign In</h2>
-          <input type="text" onChange={(m) => {setMail(m.target.value); setEmail(m.target.value);}}  htmlFor="mail" placeholder="Mail id"   required /><br/><br/>
-          <input type="password" onChange={(p) => {setPassword(p.target.value); setPassWord(p.target.value);}}  htmlFor="password" placeholder="Password"  required/><br/><br/>
-          <Button type="submit" onClick={() => {Signin(); Login();}} variant="outline-success">Sign In</Button><br/>
-          <Link to="/Signup" variant="link"  >New User</Link> 
+          <input type="text" 
+          value={mail} 
+          onChange={e=>setMail(e.target.value)} 
+          placeholder="Mail id"   required 
+          /><br/><br/>
+          <input type="password" 
+          value={password} 
+          onChange={e=>setPassword(e.target.value)} 
+          placeholder="Password"  required
+          /><br/><br/>
+          <Button type="submit"  variant="outline-success">Sign In</Button><br/>
+          <Link to='/Signup' variant="link"  >New User</Link> 
           <Link to="/Forgotpassword" variant="link" className="spacing">Forget Password</Link>
         </Form>
+       
 
     </div>
   );
