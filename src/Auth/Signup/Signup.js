@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Navigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {Link} from "react-router-dom";
@@ -10,6 +10,7 @@ function Signup() {
     const [lname,setLname]=useState("");
     const [mailid,setMailid]=useState("");
     const [password,setPassword]=useState("");
+    const navigate=useNavigate();
     const handlesubmit=(e)=>{
       e.preventDefault();
       let regobj={fname,lname,mailid,password};
@@ -19,7 +20,7 @@ function Signup() {
            body:JSON.stringify(regobj)
       }).then((res)=>{
            toast.success('Signed up successfully')
-           Navigate('/Signin');
+           navigate('/Signin');
       }).catch((err)=>{
           toast.error('Failed:'+err.message);
       });
