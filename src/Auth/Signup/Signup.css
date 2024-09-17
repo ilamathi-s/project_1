@@ -1,0 +1,38 @@
+div{
+    height: 100vh;
+    background-color: aquamarine;
+    background-size: cover;
+}
+.form{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-left: 450px;
+    margin-right: 450px;
+    padding: 150px 200px;
+    background-color:white; 
+    
+
+}
+h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    justify-content: top;
+    align-items: top;
+    margin-bottom: 15px;
+}
+
+input{
+    border-radius:10px;
+    width: 250px;
+    margin-top: 30px;
+}
+Button{
+    align-items: center;
+    align-content: bottom;
+    margin-top: 25px;
+}
+p{
+    margin-top: 10px;
+}
+
